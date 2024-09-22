@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Dictionary App</string>
+    <string name="something_get_result">Something get Result</string>
+    <string name="can_t_get_result">this is an error in dicitornaryRepositoryImpl file line 57\n</string>
+</resources>
