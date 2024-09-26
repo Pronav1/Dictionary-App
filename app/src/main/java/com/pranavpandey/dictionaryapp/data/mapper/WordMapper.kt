@@ -7,19 +7,35 @@ import com.pranavpandey.dictionaryapp.domain.model.Definition
 import com.pranavpandey.dictionaryapp.domain.model.Meaning
 import com.pranavpandey.dictionaryapp.domain.model.WordItem
 
+//fun WordItemDto.toWordItem() = WordItem(
+//    word = word ?: "",
+//    meaning = meanings?.map{ it.toMeaning()} ?: emptyList(),
+//    phonetic = phonetic?.firstOrNull()?.text ?: ""
+//)
+//
+//fun MeaningDto.toMeaning() = Meaning(
+//    definition=  definitionDtoToDefinition( definitions?.get(0)),
+//    partOfSpeech = partOfSpeech ?: ""
+//)
+//
+//fun definitionDtoToDefinition(definitionDto: DefinitionDto?) =  Definition(
+//    definition = definitionDto?.definition ?: "",
+//    example = definitionDto?.example ?: ""
+//
+//)
 fun WordItemDto.toWordItem() = WordItem(
     word = word ?: "",
-    meaning = meanings?.map{ it.toMeaning()} ?: emptyList(),
-    phonetic = phonetic?.firstOrNull()?.text ?: ""
+    phonetic = phonetic?.firstOrNull()?.text?: "",
+    meaning = meanings?.map{it.toMeaningItem()} ?:  emptyList()
 )
 
-fun MeaningDto.toMeaning() = Meaning(
-    definition=  definitionDtoToDefinition( definitions?.get(0)),
+
+fun MeaningDto.toMeaningItem () = Meaning(
+    definition = definitionToDefinition(definitions?.get(0)) ,
     partOfSpeech = partOfSpeech ?: ""
 )
 
-fun definitionDtoToDefinition(definitionDto: DefinitionDto?) =  Definition(
+fun definitionToDefinition(definitionDto: DefinitionDto?)   = Definition(
     definition = definitionDto?.definition ?: "",
-    example = definitionDto?.example ?: ""
-
+    example = definitionDto?.example ?:""
 )

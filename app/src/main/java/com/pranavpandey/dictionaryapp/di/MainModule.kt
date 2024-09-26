@@ -12,13 +12,35 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
 import javax.inject.Singleton
 
+//@Module
+//@InstallIn(SingletonComponent::class)
+//class MainModule {
+//
+//  private val interceptor: HttpLoggingInterceptor = HttpLoggingInterceptor().apply {
+//      level = HttpLoggingInterceptor.Level.BODY
+//}
+//    private val client : OkHttpClient = OkHttpClient.Builder()
+//        .addInterceptor(interceptor)
+//        .build()
+//
+//    @Provides
+//    @Singleton
+//    fun provideDictionaryApi(): DictionaryApi{
+//        return Retrofit.Builder()
+//            .addConverterFactory(GsonConverterFactory.create())
+//            .baseUrl(DictionaryApi.BASE_URL)
+//            .client(client)
+//            .build()
+//            .create()
+//    }
+//
+//}
 @Module
 @InstallIn(SingletonComponent::class)
-class MainModule {
-
-  private val interceptor: HttpLoggingInterceptor = HttpLoggingInterceptor().apply {
-      level = HttpLoggingInterceptor.Level.BODY
-}
+class MainModule{
+    private val interceptor : HttpLoggingInterceptor = HttpLoggingInterceptor().apply {
+        level = HttpLoggingInterceptor.Level.BODY
+    }
     private val client : OkHttpClient = OkHttpClient.Builder()
         .addInterceptor(interceptor)
         .build()
@@ -28,10 +50,8 @@ class MainModule {
     fun provideDictionaryApi(): DictionaryApi{
         return Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(DictionaryApi.BASE_URL)
             .client(client)
             .build()
             .create()
     }
-
 }
